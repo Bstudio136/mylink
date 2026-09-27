@@ -256,7 +256,288 @@
     const toggle = document.getElementById('themeToggle');
     const htmlElement = document.documentElement;
     
-    // Récupérer le thème sauvegardé ou utiliser le mode sombre par défaut
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes Liens | Bstudio136</title>
+  <style>
+    /* --- VARIABLES & THÈMES --- */
+    :root {
+      --bg-gradient-1: #0f0c29;
+      --bg-gradient-2: #302b63;
+      --bg-gradient-3: #24243e;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #ffffff;
+      --text-sub: #a0a0b0;
+      --link-bg: rgba(255, 255, 255, 0.03);
+      --link-border: rgba(255, 255, 255, 0.08);
+      --link-hover: rgba(0, 242, 254, 0.15);
+      --accent-1: #00f2fe;
+      --accent-2: #4facfe;
+      --glow-color: rgba(0, 242, 254, 0.4);
+      --shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    [data-theme="light"] {
+      --bg-gradient-1: #e0eafc;
+      --bg-gradient-2: #cfdef3;
+      --bg-gradient-3: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --card-border: rgba(255, 255, 255, 0.8);
+      --text-main: #1a1a2e;
+      --text-sub: #555566;
+      --link-bg: rgba(255, 255, 255, 0.9);
+      --link-border: rgba(0, 0, 0, 0.05);
+      --link-hover: rgba(79, 172, 254, 0.15);
+      --accent-1: #0072ff;
+      --accent-2: #00c6ff;
+      --glow-color: rgba(0, 114, 255, 0.3);
+      --shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    /* --- RESET & BASE --- */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3), var(--bg-gradient-1));
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      transition: color 0.3s;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* --- CARTE PRINCIPALE --- */
+    .container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card-bg);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 30px;
+      padding: 40px 25px 30px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--card-border);
+      text-align: center;
+      position: relative;
+      transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+    }
+
+    /* --- BOUTON THEME --- */
+    .theme-toggle {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: var(--link-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .theme-toggle:hover {
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 0 15px var(--glow-color);
+      border-color: var(--accent-1);
+    }
+
+    /* --- AVATAR --- */
+    .avatar-wrapper {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+      box-shadow: 0 0 25px var(--glow-color);
+      animation: pulseGlow 3s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px var(--glow-color); }
+      100% { box-shadow: 0 0 35px var(--glow-color); }
+    }
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #121212;
+      border: 4px solid var(--bg-gradient-1);
+    }
+
+    /* --- TEXTES --- */
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 5px;
+      background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .username {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    .bio {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-sub);
+      margin-bottom: 25px;
+      padding: 0 10px;
+    }
+
+    /* --- TITRES DE SECTION --- */
+    .section-title {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-sub);
+      margin: 25px 0 15px 0;
+      font-weight: 700;
+      opacity: 0.8;
+    }
+
+    /* --- LIENS --- */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 16px 20px;
+      background: var(--link-bg);
+      color: var(--text-main);
+      text-decoration: none;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 1px solid var(--link-border);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .link::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: all 0.5s;
+    }
+    .link:hover::before {
+      left: 100%;
+    }
+    .link:hover {
+      background: var(--link-hover);
+      border-color: var(--accent-1);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.15);
+    }
+    .link .icon {
+      font-size: 1.4rem;
+      width: 30px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .link:hover .icon {
+      transform: scale(1.2);
+    }
+
+    /* --- FOOTER --- */
+    .footer {
+      margin-top: 35px;
+      font-size: 0.75rem;
+      color: var(--text-sub);
+      opacity: 0.7;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">☀️</button>
+
+    <div class="avatar-wrapper">
+      <img src="https://github.com/Bstudio136.png" alt="Avatar de Bstudio136" class="avatar">
+    </div>
+
+    <h1>Bstudio136</h1>
+    <p class="username">@Bstudio136</p>
+    <p class="bio">Bienvenue dans mon univers ! Découvrez mes projets et retrouvez-moi sur mes réseaux. 🚀</p>
+
+    <!-- SECTION MES PROJETS -->
+    <h2 class="section-title">🚀 Mes Projets</h2>
+    <div class="links">
+      <!-- Remplacez les liens ci-dessous par vos propres projets -->
+      <a href="https://github.com/Bstudio136/B-suite" class="link" target="_blank" rel="noopener">
+        <span class="icon">📦</span> B-suite
+      </a>
+      <a href="https://github.com/Bstudio136/BStudio" class="link" target="_blank" rel="noopener">
+        <span class="icon">💻</span> BStudio
+      </a>
+      <!-- Ajoutez d'autres projets ici en copiant les lignes ci-dessus -->
+    </div>
+
+    <!-- SECTION MES RÉSEAUX -->
+    <h2 class="section-title">🌐 Mes Réseaux</h2>
+    <div class="links">
+      <a href="https://github.com/Bstudio136" class="link" target="_blank" rel="noopener">
+        <span class="icon">🐙</span> GitHub
+      </a>
+      <a href="https://tiktok.com/@votre-pseudo" class="link" target="_blank" rel="noopener">
+        <span class="icon">🎵</span> TikTok
+      </a>
+      <a href="https://twitter.com/votre-pseudo" class="link" target="_blank" rel="noopener">
+        <span class="icon">🐦</span> Twitter / X
+      </a>
+      <a href="https://instagram.com/votre-pseudo" class="link" target="_blank" rel="noopener">
+        <span class="icon">📸</span> Instagram
+      </a>
+      <a href="https://youtube.com/@votre-pseudo" class="link" target="_blank" rel="noopener">
+        <span class="icon">▶️</span> YouTube
+      </a>
+      <a href="mailto:email@exemple.com" class="link">
+        <span class="icon">✉️</span> Email
+      </a>
+    </div>
+
+    <p class="footer">Fait avec ❤️ et hébergé sur GitHub Pages</p>
+  </div>
+
+  <script>
+    const toggle = document.getElementById('themeToggle');
+    const htmlElement = document.documentElement;
+    
     const currentTheme = localStorage.getItem('theme') || 'dark';
     htmlElement.setAttribute('data-theme', currentTheme);
     toggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
