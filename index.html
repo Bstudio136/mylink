@@ -1,148 +1,235 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mes liens</title>
+  <title>Mes Liens | Bstudio136</title>
   <style>
+    /* --- VARIABLES & THÈMES --- */
     :root {
-      --bg: #f0f2f5;
-      --card: rgba(255,255,255,0.8);
-      --text: #1a1a1a;
-      --text-light: #555;
-      --link-bg: #ffffff;
-      --link-hover: #e9ecef;
-      --border: rgba(0,0,0,0.1);
-      --shadow: 0 8px 32px rgba(0,0,0,0.1);
-      --accent: #6c63ff;
+      --bg-gradient-1: #0f0c29;
+      --bg-gradient-2: #302b63;
+      --bg-gradient-3: #24243e;
+      --card-bg: rgba(255, 255, 255, 0.05);
+      --card-border: rgba(255, 255, 255, 0.1);
+      --text-main: #ffffff;
+      --text-sub: #a0a0b0;
+      --link-bg: rgba(255, 255, 255, 0.03);
+      --link-border: rgba(255, 255, 255, 0.08);
+      --link-hover: rgba(0, 242, 254, 0.15);
+      --accent-1: #00f2fe;
+      --accent-2: #4facfe;
+      --glow-color: rgba(0, 242, 254, 0.4);
+      --shadow: 0 20px 50px rgba(0,0,0,0.5);
     }
-    [data-theme="dark"] {
-      --bg: #121212;
-      --card: rgba(30,30,30,0.8);
-      --text: #ffffff;
-      --text-light: #aaaaaa;
-      --link-bg: #1e1e1e;
-      --link-hover: #2a2a2a;
-      --border: rgba(255,255,255,0.1);
-      --shadow: 0 8px 32px rgba(0,0,0,0.5);
-      --accent: #8b83ff;
+
+    [data-theme="light"] {
+      --bg-gradient-1: #e0eafc;
+      --bg-gradient-2: #cfdef3;
+      --bg-gradient-3: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.7);
+      --card-border: rgba(255, 255, 255, 0.8);
+      --text-main: #1a1a2e;
+      --text-sub: #555566;
+      --link-bg: rgba(255, 255, 255, 0.9);
+      --link-border: rgba(0, 0, 0, 0.05);
+      --link-hover: rgba(79, 172, 254, 0.15);
+      --accent-1: #0072ff;
+      --accent-2: #00c6ff;
+      --glow-color: rgba(0, 114, 255, 0.3);
+      --shadow: 0 20px 50px rgba(0,0,0,0.1);
     }
+
+    /* --- RESET & BASE --- */
     * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
+      background: linear-gradient(-45deg, var(--bg-gradient-1), var(--bg-gradient-2), var(--bg-gradient-3), var(--bg-gradient-1));
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: var(--text-main);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
       padding: 20px;
-      transition: background 0.3s, color 0.3s;
+      transition: color 0.3s;
     }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* --- CARTE PRINCIPALE --- */
     .container {
       width: 100%;
       max-width: 480px;
-      background: var(--card);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border-radius: 24px;
-      padding: 32px 24px;
+      background: var(--card-bg);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 30px;
+      padding: 40px 25px 30px;
       box-shadow: var(--shadow);
-      border: 1px solid var(--border);
+      border: 1px solid var(--card-border);
       text-align: center;
-      transition: background 0.3s, border 0.3s;
+      position: relative;
+      transition: background 0.3s, border 0.3s, box-shadow 0.3s;
+      overflow: hidden;
     }
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--accent);
-      margin-bottom: 16px;
-    }
-    h1 {
-      font-size: 1.5rem;
-      margin-bottom: 4px;
-    }
-    .username {
-      color: var(--text-light);
-      font-size: 0.9rem;
-      margin-bottom: 12px;
-    }
-    .bio {
-      font-size: 0.95rem;
-      line-height: 1.5;
-      color: var(--text-light);
-      margin-bottom: 24px;
-    }
-    .links {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    .link {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 14px 18px;
-      background: var(--link-bg);
-      color: var(--text);
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: 500;
-      border: 1px solid var(--border);
-      transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
-    }
-    .link:hover {
-      background: var(--link-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .link:active {
-      transform: translateY(0);
-    }
-    .link .icon {
-      font-size: 1.2rem;
-      width: 24px;
-      text-align: center;
-    }
+
+    /* --- BOUTON THEME (BIEN VISIBLE) --- */
     .theme-toggle {
-      position: fixed;
+      position: absolute;
       top: 20px;
       right: 20px;
-      background: var(--card);
-      border: 1px solid var(--border);
-      color: var(--text);
-      width: 40px;
-      height: 40px;
+      background: var(--link-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+      width: 45px;
+      height: 45px;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      transition: background 0.3s, color 0.3s;
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      z-index: 10;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
+    .theme-toggle:hover {
+      transform: scale(1.1) rotate(15deg);
+      box-shadow: 0 0 15px var(--glow-color);
+      border-color: var(--accent-1);
+    }
+
+    /* --- AVATAR --- */
+    .avatar-wrapper {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      padding: 4px;
+      background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+      box-shadow: 0 0 25px var(--glow-color);
+      animation: pulseGlow 3s infinite alternate;
+    }
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 15px var(--glow-color); }
+      100% { box-shadow: 0 0 35px var(--glow-color); }
+    }
+    .avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #121212;
+      border: 4px solid var(--bg-gradient-1);
+    }
+
+    /* --- TEXTES --- */
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 5px;
+      background: linear-gradient(45deg, var(--accent-1), var(--accent-2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .username {
+      color: var(--text-sub);
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+    .bio {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: var(--text-sub);
+      margin-bottom: 30px;
+      padding: 0 10px;
+    }
+
+    /* --- LIENS --- */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    .link {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 16px 20px;
+      background: var(--link-bg);
+      color: var(--text-main);
+      text-decoration: none;
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 1px solid var(--link-border);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .link::before {
+      content: '';
+      position: absolute;
+      top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+      transition: all 0.5s;
+    }
+    .link:hover::before {
+      left: 100%;
+    }
+    .link:hover {
+      background: var(--link-hover);
+      border-color: var(--accent-1);
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 10px 25px rgba(0, 242, 254, 0.15);
+    }
+    .link .icon {
+      font-size: 1.4rem;
+      width: 30px;
+      text-align: center;
+      transition: transform 0.3s;
+    }
+    .link:hover .icon {
+      transform: scale(1.2);
+    }
+
+    /* --- FOOTER --- */
     .footer {
-      margin-top: 24px;
+      margin-top: 35px;
       font-size: 0.75rem;
-      color: var(--text-light);
+      color: var(--text-sub);
+      opacity: 0.7;
     }
   </style>
 </head>
 <body>
-  <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">🌙</button>
 
   <div class="container">
-    <img src="https://github.com/votre-pseudo.png" alt="Avatar" class="avatar">
-    <h1>Votre Nom</h1>
+    <!-- Bouton Theme bien visible en haut à droite -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">☀️</button>
+
+    <div class="avatar-wrapper">
+      <!-- Remplacez l'URL par votre propre image -->
+      <img src="https://github.com/Bstudio136.png" alt="Avatar de Bstudio136" class="avatar">
+    </div>
+
+    <h1>Bstudio136</h1>
     <p class="username">@Bstudio136</p>
-    <p class="bio">Bienvenue sur ma page de liens ! Retrouvez tous mes projets et réseaux ici.</p>
+    <p class="bio">Bienvenue dans mon univers ! Découvrez tous mes projets et réseaux ci-dessous. 🚀</p>
 
     <div class="links">
-      <a href="https://github.com/votre-pseudo" class="link" target="_blank" rel="noopener">
+      <a href="https://github.com/Bstudio136" class="link" target="_blank" rel="noopener">
         <span class="icon">🐙</span> GitHub
       </a>
       <a href="https://twitter.com/votre-pseudo" class="link" target="_blank" rel="noopener">
@@ -167,16 +254,19 @@
 
   <script>
     const toggle = document.getElementById('themeToggle');
-    const currentTheme = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', currentTheme);
+    const htmlElement = document.documentElement;
+    
+    // Récupérer le thème sauvegardé ou utiliser le mode sombre par défaut
+    const currentTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', currentTheme);
     toggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
 
     toggle.addEventListener('click', () => {
-      const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', theme);
+      const theme = htmlElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      htmlElement.setAttribute('data-theme', theme);
       localStorage.setItem('theme', theme);
       toggle.textContent = theme === 'dark' ? '☀️' : '🌙';
     });
   </script>
 </body>
-  </html>
+</html>
