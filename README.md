@@ -50,7 +50,7 @@ Pour adapter cette page à votre propre profil :
 
 Bstudio136
 
-· 🐙 GitHub : @Bstudio136
+· 🐙 GitHub : @Bstudio136<br>
 · 🎵 TikTok : @bstudio136
 · 🐦 Twitter / X : @Bstudio136
 · 📺 YouTube : @Bstudio136
