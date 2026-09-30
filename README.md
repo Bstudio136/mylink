@@ -6,7 +6,7 @@
 ---
 
 <div id="english"></div>
-
+🇬🇧<br>
 # 🌟 My Links | Bstudio136
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
@@ -69,7 +69,7 @@ This project is under the MIT License. You are free to use and modify it for you
 ---
 
 <div id="francais"></div>
-
+🇫🇷<br>
 # 🌟 Mes Liens | Bstudio136
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
