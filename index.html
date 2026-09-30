@@ -483,18 +483,35 @@
       text-shadow: 0 0 10px var(--glow-gold);
     }
 
-    /* --- SÉPARATION EMAIL --- */
+    /* --- SÉPARATION EMAIL / DON --- */
     .email-separator {
       margin-top: 30px;
       padding-top: 20px;
       border-top: 2px dashed rgba(255, 215, 0, 0.3);
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 15px; /* Cet écart va espacer le bouton email et le bouton don */
+      align-items: center; /* Centre les éléments horizontalement */
     }
     
     .email-separator .link {
       animation: fadeInUp 0.6s ease-out 1.3s forwards, cardFloat 6s ease-in-out infinite;
+      width: 100%; /* Assure que le bouton email prend la largeur */
+    }
+
+    /* Style spécifique pour le bouton de don HiddenPay */
+    .donate-btn-container {
+      margin-top: 5px; /* Petit espace supplémentaire */
+      animation: fadeInUp 0.6s ease-out 1.4s forwards;
+      opacity: 0; /* Commence invisible, l'animation le fera apparaître */
+    }
+    .donate-btn-container img {
+      transition: transform 0.3s ease, filter 0.3s ease;
+      cursor: pointer;
+    }
+    .donate-btn-container img:hover {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
     }
 
     /* --- FOOTER --- */
@@ -503,7 +520,7 @@
       font-size: 0.75rem;
       color: var(--text-sub);
       opacity: 0;
-      animation: fadeInUp 0.8s ease-out 1.4s forwards;
+      animation: fadeInUp 0.8s ease-out 1.5s forwards;
     }
     
     [data-theme="light"] .container { background: rgba(255, 255, 255, 0.95); }
@@ -574,12 +591,20 @@
       </a>
     </div>
 
-    <!-- SECTION EMAIL (SÉPARÉE) -->
+    <!-- SECTION EMAIL ET DON (SÉPARÉE) -->
     <div class="email-separator">
+      <!-- Bouton Email existant -->
       <a href="javascript:void(0)" class="link" id="emailBtn" onclick="copyEmail(event)">
         <span class="icon"><i class="fas fa-envelope"></i></span> 
         <span class="text" id="emailText">Copier l'Email</span>
       </a>
+
+      <!-- NOUVEAU : Bouton de don HiddenPay intégré ici -->
+      <div class="donate-btn-container">
+        <a href="https://hiddenswap.com/pay/AgRPwfFe" target="_blank" rel="noopener">
+          <img src="https://hiddenswap.com/pay/AgRPwfFe/button.svg" alt="Donate with any coin" width="247" height="44">
+        </a>
+      </div>
     </div>
 
     <p class="footer">Fait avec ❤️ et hébergé sur GitHub Pages</p>
@@ -683,7 +708,7 @@
     // --- FONCTION COPIER EMAIL ---
     function copyEmail(event) {
       event.preventDefault();
-      const email = "email@exemple.com"; // Remplacez par votre email
+      const email = "sbavaytr@gmail.com"; // J'ai mis votre email ici au cas où
       
       navigator.clipboard.writeText(email).then(() => {
         const textElement = document.getElementById('emailText');
