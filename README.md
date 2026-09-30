@@ -66,6 +66,8 @@ To adapt this page to your own profile:
 
 This project is under the MIT License. You are free to use and modify it for your own needs.
 
+<a href="https://hiddenswap.com/pay/AgRPwfFe" target="_blank" rel="noopener"><img src="https://hiddenswap.com/pay/AgRPwfFe/button.svg" alt="Donate with any coin" width="247" height="44"></a>
+
 ---
 
 <div id="francais"></div>
@@ -128,3 +130,5 @@ Pour adapter cette page à votre propre profil :
 ## 📄 Licence
 
 Ce projet est sous licence MIT. Vous êtes libre de l'utiliser et de le modifier pour vos propres besoins.
+
+<a href="https://hiddenswap.com/pay/AgRPwfFe" target="_blank" rel="noopener"><img src="https://hiddenswap.com/pay/AgRPwfFe/button.svg" alt="Donate with any coin" width="247" height="44"></a>
