@@ -51,8 +51,8 @@ Pour adapter cette page à votre propre profil :
 Bstudio136
 
 · 🐙 GitHub : @Bstudio136<br>
-· 🎵 TikTok : @bstudio136
-· 🐦 Twitter / X : @Bstudio136
+· 🎵 TikTok : @bstudio136<br>
+· 🐦 Twitter / X : @Bstudio136<br>
 · 📺 YouTube : @Bstudio136
 
 📄 Licence
