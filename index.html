@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr" data-theme="dark">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mes Liens | Bstudio136</title>
+  <title>My Links | Bstudio136</title>
   <!-- FontAwesome pour les icônes réelles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -81,7 +81,7 @@
       backdrop-filter: blur(25px);
       -webkit-backdrop-filter: blur(25px);
       border-radius: 16px;
-      padding: 40px 25px 30px;
+      padding: 72px 25px 30px;
       border: 2px solid var(--card-border);
       box-shadow: var(--shadow-3d);
       text-align: center;
@@ -95,6 +95,65 @@
     @keyframes fadeInUp {
       from { opacity: 0; transform: translateY(30px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* --- SÉLECTEUR DE LANGUE (DRAPEAUX) --- */
+    .lang-selector {
+      position: absolute;
+      top: 22px;
+      left: 20px;
+      display: flex;
+      gap: 8px;
+      z-index: 10;
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 0.15s forwards;
+    }
+
+    .lang-btn {
+      width: 38px;
+      height: 27px;
+      padding: 0;
+      border: 1.5px solid rgba(255, 255, 255, 0.25);
+      border-radius: 6px;
+      background: rgba(0, 0, 0, 0.45);
+      cursor: pointer;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.5;
+      filter: grayscale(70%);
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    .lang-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      pointer-events: none;
+    }
+
+    .lang-btn:hover {
+      opacity: 1;
+      filter: grayscale(0%);
+      transform: translateY(-3px) scale(1.1);
+      border-color: var(--card-border);
+      box-shadow: 0 0 14px var(--glow-gold);
+    }
+
+    .lang-btn.active {
+      opacity: 1;
+      filter: grayscale(0%);
+      border-color: var(--card-border);
+      box-shadow: 0 0 16px var(--glow-gold), inset 0 0 10px rgba(255, 215, 0, 0.4);
+      transform: translateY(-1px);
+    }
+
+    [data-theme="light"] .lang-btn {
+      border-color: rgba(0, 0, 0, 0.2);
+      background: rgba(255, 255, 255, 0.6);
     }
 
     /* --- BOUTON THEME --- */
@@ -133,7 +192,6 @@
       padding: 5px;
       background: linear-gradient(45deg, var(--card-border), #FFA500, var(--card-border));
       box-shadow: 0 0 30px var(--glow-gold);
-      animation: pulseGlow 3s infinite alternate;
       opacity: 0;
       animation: fadeInUp 0.8s ease-out 0.2s forwards, pulseGlow 3s infinite alternate 0.8s;
     }
@@ -283,7 +341,7 @@
       background: linear-gradient(135deg, rgba(74, 0, 224, 0.95) 0%, rgba(142, 45, 226, 0.95) 100%);
     }
 
-    /* --- NOUVELLE ANIMATION AU CLIC (PRESS DOWN) --- */
+    /* --- ANIMATION AU CLIC (PRESS DOWN) --- */
     .link.pressed {
       transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(0.95) translateY(-2px) !important;
       box-shadow: 0 0 60px rgba(255, 215, 0, 0.9), inset 0 0 40px rgba(142, 45, 226, 0.9) !important;
@@ -316,14 +374,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 50%; /* Cercle parfait */
-      border: 1.5px solid #FFD700; /* Bordure dorée conservée */
+      border-radius: 50%;
+      border: 1.5px solid #FFD700;
       box-shadow: 
         0 4px 10px rgba(0,0,0,0.6),
         inset 0 2px 5px rgba(255,255,255,0.4),
         inset 0 -3px 8px rgba(0,0,0,0.8),
         0 0 15px rgba(255, 215, 0, 0.5);
-      color: #FFD700; /* Icône dorée */
+      color: #FFD700;
       text-shadow: 
         0 1px 0 #FFF, 
         0 2px 0 #B8860B, 
@@ -331,6 +389,7 @@
       transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transform: perspective(500px) rotateY(0deg);
       z-index: 2;
+      flex-shrink: 0;
     }
     
     .link:hover .icon {
@@ -466,9 +525,9 @@
       transform: perspective(500px) rotateY(0deg) scale(1.1);
     }
 
-    /* --- NOM DU RÉSEAU SOUS L'ICÔNE (PLUS PETIT) --- */
+    /* --- NOM DU RÉSEAU SOUS L'ICÔNE --- */
     .social-name {
-      font-size: 0.45rem; /* Taille réduite comme demandé */
+      font-size: 0.45rem;
       font-weight: 700;
       color: var(--text-main);
       text-transform: uppercase;
@@ -490,20 +549,20 @@
       border-top: 2px dashed rgba(255, 215, 0, 0.3);
       display: flex;
       flex-direction: column;
-      gap: 15px; /* Cet écart va espacer le bouton email et le bouton don */
-      align-items: center; /* Centre les éléments horizontalement */
+      gap: 15px;
+      align-items: center;
     }
     
     .email-separator .link {
       animation: fadeInUp 0.6s ease-out 1.3s forwards, cardFloat 6s ease-in-out infinite;
-      width: 100%; /* Assure que le bouton email prend la largeur */
+      width: 100%;
     }
 
     /* Style spécifique pour le bouton de don HiddenPay */
     .donate-btn-container {
-      margin-top: 5px; /* Petit espace supplémentaire */
+      margin-top: 5px;
       animation: fadeInUp 0.6s ease-out 1.4s forwards;
-      opacity: 0; /* Commence invisible, l'animation le fera apparaître */
+      opacity: 0;
     }
     .donate-btn-container img {
       transition: transform 0.3s ease, filter 0.3s ease;
@@ -526,12 +585,33 @@
     [data-theme="light"] .container { background: rgba(255, 255, 255, 0.95); }
     [data-theme="light"] .link { color: #ffffff; }
     [data-theme="light"] h1 { text-shadow: none; }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 400px) {
+      .container { padding: 68px 18px 25px; }
+      .lang-btn { width: 33px; height: 24px; }
+      .theme-toggle { width: 40px; height: 40px; font-size: 1.15rem; }
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème"><i class="fas fa-sun"></i></button>
+
+    <!-- SÉLECTEUR DE LANGUE -->
+    <div class="lang-selector" role="group" aria-label="Language selector">
+      <button class="lang-btn active" data-lang="en" title="English" aria-label="English">
+        <img src="https://flagcdn.com/w40/gb.png" alt="English">
+      </button>
+      <button class="lang-btn" data-lang="fr" title="Français" aria-label="Français">
+        <img src="https://flagcdn.com/w40/fr.png" alt="Français">
+      </button>
+      <button class="lang-btn" data-lang="it" title="Italiano" aria-label="Italiano">
+        <img src="https://flagcdn.com/w40/it.png" alt="Italiano">
+      </button>
+    </div>
+
+    <button class="theme-toggle" id="themeToggle" aria-label="Change theme" data-i18n-label="themeToggleLabel"><i class="fas fa-sun"></i></button>
 
     <div class="avatar-wrapper">
       <img src="https://raw.githubusercontent.com/Bstudio136/mylink/main/1790505707078.jpg" alt="Avatar de Bstudio136" class="avatar">
@@ -539,31 +619,31 @@
 
     <h1>Bstudio136</h1>
     <p class="username">@Bstudio136</p>
-    <p class="bio">Bienvenue dans mon univers ! Découvrez mes projets et retrouvez-moi sur mes réseaux. 🚀</p>
+    <p class="bio" data-i18n="bio">Welcome to my universe! Discover my projects and find me on my social networks. 🚀</p>
 
     <!-- SECTION MES PROJETS -->
-    <h2 class="section-title">🚀 Mes Projets</h2>
+    <h2 class="section-title" data-i18n="projectsTitle">🚀 My Projects</h2>
     <div class="links">
       <div class="link accordion-toggle" id="projectsToggle">
         <span class="icon"><i class="fas fa-folder-open"></i></span> 
-        <span class="text">Voir mes projets</span>
+        <span class="text" data-i18n="viewProjects">View my projects</span>
         <span class="arrow"><i class="fas fa-chevron-down"></i></span>
       </div>
       
       <div class="projects-list" id="projectsList">
         <a href="https://bstudio136.github.io/BSuite/BSuite.html" class="link sub-link" target="_blank" rel="noopener">
           <span class="icon"><i class="fas fa-laptop-code"></i></span> 
-          <span class="text">BSuite</span>
+          <span class="text" data-i18n="project1">BSuite</span>
         </a>
         <a href="https://bstudio136.github.io/BSuite/index.html" class="link sub-link" target="_blank" rel="noopener">
           <span class="icon"><i class="fas fa-calculator"></i></span>
-          <span class="text">Calc cache BSuite</span>
+          <span class="text" data-i18n="project2">BSuite Cache Calculator</span>
         </a>
       </div>
     </div>
 
-    <!-- SECTION MES RÉSEAUX (GRILLE AVEC NOMS ET COULEURS DE MARQUE) -->
-    <h2 class="section-title">🌐 Mes Réseaux</h2>
+    <!-- SECTION MES RÉSEAUX -->
+    <h2 class="section-title" data-i18n="networksTitle">🌐 My Networks</h2>
     <div class="social-grid">
       <a href="https://github.com/Bstudio136" class="link social-link social-github" target="_blank" rel="noopener">
         <span class="icon"><i class="fab fa-github"></i></span>
@@ -591,15 +671,13 @@
       </a>
     </div>
 
-    <!-- SECTION EMAIL ET DON (SÉPARÉE) -->
+    <!-- SECTION EMAIL ET DON -->
     <div class="email-separator">
-      <!-- Bouton Email existant -->
       <a href="javascript:void(0)" class="link" id="emailBtn" onclick="copyEmail(event)">
         <span class="icon"><i class="fas fa-envelope"></i></span> 
-        <span class="text" id="emailText">Copier l'Email</span>
+        <span class="text" id="emailText" data-i18n="copyEmail">Copy Email</span>
       </a>
 
-      <!-- NOUVEAU : Bouton de don HiddenPay intégré ici -->
       <div class="donate-btn-container">
         <a href="https://hiddenswap.com/pay/AgRPwfFe" target="_blank" rel="noopener">
           <img src="https://hiddenswap.com/pay/AgRPwfFe/button.svg" alt="Donate with any coin" width="247" height="44">
@@ -607,17 +685,104 @@
       </div>
     </div>
 
-    <p class="footer">Fait avec ❤️ et hébergé sur GitHub Pages</p>
+    <p class="footer" data-i18n="footer">Made with ❤️ and hosted on GitHub Pages</p>
   </div>
 
   <script>
-    // --- GESTION DU THÈME ---
+    /* ============================================================
+       TRADUCTIONS
+       ============================================================ */
+    const translations = {
+      en: {
+        pageTitle: "My Links | Bstudio136",
+        themeToggleLabel: "Change theme",
+        bio: "Welcome to my universe! Discover my projects and find me on my social networks. 🚀",
+        projectsTitle: "🚀 My Projects",
+        viewProjects: "View my projects",
+        project1: "BSuite",
+        project2: "BSuite Cache Calculator",
+        networksTitle: "🌐 My Networks",
+        copyEmail: "Copy Email",
+        copied: "Copied! ✅",
+        footer: "Made with ❤️ and hosted on GitHub Pages"
+      },
+      fr: {
+        pageTitle: "Mes Liens | Bstudio136",
+        themeToggleLabel: "Changer de thème",
+        bio: "Bienvenue dans mon univers ! Découvrez mes projets et retrouvez-moi sur mes réseaux. 🚀",
+        projectsTitle: "🚀 Mes Projets",
+        viewProjects: "Voir mes projets",
+        project1: "BSuite",
+        project2: "Calc cache BSuite",
+        networksTitle: "🌐 Mes Réseaux",
+        copyEmail: "Copier l'Email",
+        copied: "Copié ! ✅",
+        footer: "Fait avec ❤️ et hébergé sur GitHub Pages"
+      },
+      it: {
+        pageTitle: "I Miei Link | Bstudio136",
+        themeToggleLabel: "Cambia tema",
+        bio: "Benvenuto nel mio universo! Scopri i miei progetti e trovami sui miei social network. 🚀",
+        projectsTitle: "🚀 I Miei Progetti",
+        viewProjects: "Vedi i miei progetti",
+        project1: "BSuite",
+        project2: "Calcolatrice cache BSuite",
+        networksTitle: "🌐 I Miei Social",
+        copyEmail: "Copia l'Email",
+        copied: "Copiato! ✅",
+        footer: "Fatto con ❤️ e ospitato su GitHub Pages"
+      }
+    };
+
+    let currentLang = 'en';
+
+    /* ============================================================
+       APPLICATION DES TRADUCTIONS
+       ============================================================ */
+    function applyTranslations(lang) {
+      const t = translations[lang];
+      if (!t) return;
+
+      currentLang = lang;
+      document.documentElement.lang = lang;
+      document.title = t.pageTitle;
+
+      // Textes
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+
+      // Attributs aria-label
+      document.querySelectorAll('[data-i18n-label]').forEach(el => {
+        const key = el.getAttribute('data-i18n-label');
+        if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
+      });
+
+      // État actif des boutons de langue
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === lang);
+      });
+
+      localStorage.setItem('lang', lang);
+    }
+
+    // Gestion du clic sur les drapeaux
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        applyTranslations(btn.dataset.lang);
+      });
+    });
+
+    /* ============================================================
+       GESTION DU THÈME
+       ============================================================ */
     const toggle = document.getElementById('themeToggle');
     const htmlElement = document.documentElement;
-    
-    const currentTheme = localStorage.getItem('theme') || 'dark';
-    htmlElement.setAttribute('data-theme', currentTheme);
-    updateThemeIcon(currentTheme);
+
+    const savedTheme = localStorage.getItem('theme') || 'dark';
+    htmlElement.setAttribute('data-theme', savedTheme);
+    updateThemeIcon(savedTheme);
 
     function updateThemeIcon(theme) {
       toggle.innerHTML = theme === 'dark' ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
@@ -630,7 +795,9 @@
       updateThemeIcon(theme);
     });
 
-    // --- GESTION DE L'ACCORDÉON PROJETS ---
+    /* ============================================================
+       ACCORDÉON PROJETS
+       ============================================================ */
     const projectsToggle = document.getElementById('projectsToggle');
     const projectsList = document.getElementById('projectsList');
 
@@ -639,26 +806,28 @@
       projectsList.classList.toggle('open');
     });
 
-    // --- EFFET 3D TILT + ANIMATION AU CLIC ---
+    /* ============================================================
+       EFFET 3D TILT + ANIMATION AU CLIC
+       ============================================================ */
     if (window.matchMedia("(hover: hover)").matches) {
       const links = document.querySelectorAll('.link');
-      
+
       links.forEach(link => {
         link.addEventListener('mousemove', (e) => {
           const rect = link.getBoundingClientRect();
           const x = e.clientX - rect.left;
           const y = e.clientY - rect.top;
-          
+
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
-          
+
           const intensity = link.classList.contains('social-link') ? 3 : 6;
           const rotateX = ((y - centerY) / centerY) * -intensity;
           const rotateY = ((x - centerX) / centerX) * intensity;
-          
+
           link.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03) translateY(-8px)`;
         });
-        
+
         link.addEventListener('mouseleave', () => {
           link.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0)`;
           link.classList.remove('pressed');
@@ -679,50 +848,58 @@
       });
     }
 
-    // --- ANNEAU NÉON AU CLIC ---
+    /* ============================================================
+       ANNEAU NÉON AU CLIC
+       ============================================================ */
     const allLinks = document.querySelectorAll('.link');
     allLinks.forEach(link => {
       link.addEventListener('click', function(e) {
-        if (this.id === 'projectsToggle') return; 
-        
+        if (this.id === 'projectsToggle') return;
+
         const rect = this.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        
+
         const ring = document.createElement('span');
         ring.classList.add('click-ring');
-        
+
         const size = Math.max(rect.width, rect.height);
         ring.style.width = ring.style.height = `${size}px`;
         ring.style.left = `${x - size/2}px`;
         ring.style.top = `${y - size/2}px`;
-        
+
         this.appendChild(ring);
-        
+
         setTimeout(() => {
           ring.remove();
         }, 600);
       });
     });
 
-    // --- FONCTION COPIER EMAIL ---
+    /* ============================================================
+       COPIE DE L'EMAIL
+       ============================================================ */
     function copyEmail(event) {
       event.preventDefault();
-      const email = "sbavaytr@gmail.com"; // J'ai mis votre email ici au cas où
-      
+      const email = "sbavaytr@gmail.com";
+
       navigator.clipboard.writeText(email).then(() => {
         const textElement = document.getElementById('emailText');
-        const originalText = textElement.textContent;
-        
-        textElement.textContent = "Copié ! ✅";
-        
+        textElement.textContent = translations[currentLang].copied;
+
         setTimeout(() => {
-          textElement.textContent = originalText;
+          textElement.textContent = translations[currentLang].copyEmail;
         }, 2000);
       }).catch(err => {
         console.error('Erreur lors de la copie : ', err);
       });
     }
+
+    /* ============================================================
+       INITIALISATION DE LA LANGUE
+       ============================================================ */
+    const savedLang = localStorage.getItem('lang') || 'en'; // Anglais par défaut
+    applyTranslations(translations[savedLang] ? savedLang : 'en');
   </script>
 </body>
 </html>
