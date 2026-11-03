@@ -582,13 +582,16 @@
       animation: fadeInUp 0.8s ease-out 1.5s forwards;
     }
     
-    /* Force l'iframe de Shoutbox à ne pas dépasser de la carte */
-    .chat-container iframe {
+    /* Force l'iframe de Shoutbox à ne pas dépasser et à avoir une hauteur */
+    .chat-container iframe, .shoutBoxContainer {
       max-width: 100% !important;
+      width: 100% !important;
+      min-height: 350px !important;
       border-radius: 8px;
       border: 1px solid var(--card-border) !important;
       box-shadow: 0 0 15px rgba(0,0,0,0.5);
-      background: #000; /* Fond noir en attendant le chargement */
+      background: #000; 
+      display: block !important;
     }
 
     /* --- FOOTER --- */
@@ -610,13 +613,6 @@
       .lang-btn { width: 33px; height: 24px; }
       .theme-toggle { width: 40px; height: 40px; font-size: 1.15rem; }
     }
-    /* Force le conteneur du chat Shoutbox à avoir une taille visible */
-.shoutBoxContainer {
-  width: 100% !important;
-  min-height: 350px !important; /* Ajuste cette valeur si besoin (ex: 400px) */
-  height: auto !important;
-  display: block !important;
-}
   </style>
 </head>
 <body>
@@ -733,7 +729,7 @@
     <!-- NOUVELLE SECTION : CHAT PUBLIC (SHOUTBOX) -->
     <!-- ============================================= -->
     <div class="chat-section">
-      <h2 class="section-title">💬 Chat Public</h2>
+      <h2 class="section-title" data-i18n="chatTitle">💬 Chat Public</h2>
       <div class="chat-container" style="display: flex; justify-content: center; width: 100%;">
         <!-- SCRIPT SHOUTBOX -->
         <script src="https://www.shoutbox.com/chat/17628"></script>
@@ -746,7 +742,7 @@
 
   <script>
     /* ============================================================
-       TRADUCTIONS (CORRIGÉES AVEC (PC) ET TRANSFERT P2P)
+       TRADUCTIONS (CORRIGÉES AVEC LE CHAT)
        ============================================================ */
     const translations = {
       en: {
@@ -764,6 +760,7 @@
         networksTitle: "🌐 My Networks",
         copyEmail: "Copy Email",
         copied: "Copied! ✅",
+        chatTitle: "💬 Public Chat",
         footer: "Made with ❤️ and hosted on GitHub Pages"
       },
       fr: {
@@ -781,6 +778,7 @@
         networksTitle: "🌐 Mes Réseaux",
         copyEmail: "Copier l'Email",
         copied: "Copié ! ✅",
+        chatTitle: "💬 Chat Public",
         footer: "Fait avec ❤️ et hébergé sur GitHub Pages"
       },
       it: {
@@ -798,6 +796,7 @@
         networksTitle: "🌐 I Miei Social",
         copyEmail: "Copia l'Email",
         copied: "Copiato! ✅",
+        chatTitle: "💬 Chat Pubblico",
         footer: "Fatto con ❤️ e ospitato su GitHub Pages"
       }
     };
