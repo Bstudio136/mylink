@@ -573,13 +573,31 @@
       filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.6));
     }
 
+    /* --- SECTION CHAT (SHOUTBOX) --- */
+    .chat-section {
+      margin-top: 35px;
+      padding-top: 20px;
+      border-top: 2px dashed rgba(255, 215, 0, 0.3);
+      opacity: 0;
+      animation: fadeInUp 0.8s ease-out 1.5s forwards;
+    }
+    
+    /* Force l'iframe de Shoutbox à ne pas dépasser de la carte */
+    .chat-container iframe {
+      max-width: 100% !important;
+      border-radius: 8px;
+      border: 1px solid var(--card-border) !important;
+      box-shadow: 0 0 15px rgba(0,0,0,0.5);
+      background: #000; /* Fond noir en attendant le chargement */
+    }
+
     /* --- FOOTER --- */
     .footer {
-      margin-top: 35px;
+      margin-top: 25px;
       font-size: 0.75rem;
       color: var(--text-sub);
       opacity: 0;
-      animation: fadeInUp 0.8s ease-out 1.5s forwards;
+      animation: fadeInUp 0.8s ease-out 1.6s forwards;
     }
     
     [data-theme="light"] .container { background: rgba(255, 255, 255, 0.95); }
@@ -703,6 +721,18 @@
         </a>
       </div>
     </div>
+
+    <!-- ============================================= -->
+    <!-- NOUVELLE SECTION : CHAT PUBLIC (SHOUTBOX) -->
+    <!-- ============================================= -->
+    <div class="chat-section">
+      <h2 class="section-title">💬 Chat Public</h2>
+      <div class="chat-container" style="display: flex; justify-content: center; width: 100%;">
+        <!-- SCRIPT SHOUTBOX -->
+        <script src="https://www.shoutbox.com/chat/17628"></script>
+      </div>
+    </div>
+    <!-- ============================================= -->
 
     <p class="footer" data-i18n="footer">Made with ❤️ and hosted on GitHub Pages</p>
   </div>
