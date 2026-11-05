@@ -4,6 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Links | Bstudio136</title>
+
+  <!-- ===== FAVICON / ICÔNE DU SITE ===== -->
+  <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/Bstudio136/mylink/main/mylink.png">
+  <link rel="shortcut icon" type="image/png" href="https://raw.githubusercontent.com/Bstudio136/mylink/main/mylink.png">
+  <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/Bstudio136/mylink/main/mylink.png">
+  <meta name="theme-color" content="#0f0c29">
+  <!-- ==================================== -->
+
   <!-- FontAwesome pour les icônes réelles -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <style>
@@ -672,7 +680,6 @@
           <span class="icon"><i class="fas fa-lock"></i></span>
           <span class="text" data-i18n="project5">One link One secret</span>
         </a>
-        <!-- NOUVEAU PROJET TRANSFERT P2P AJOUTÉ ICI -->
         <a href="https://bstudio136.github.io/TransfertP2P/" class="link sub-link" target="_blank" rel="noopener">
           <span class="icon"><i class="fas fa-arrow-right-arrow-left"></i></span>
           <span class="text" data-i18n="project6">Transfert P2P</span>
@@ -695,12 +702,10 @@
         <span class="icon"><i class="fab fa-x-twitter"></i></span>
         <span class="social-name">Twitter / X</span>
       </a>
-      <!-- PENSE À MODIFIER L'URL FACEBOOK -->
       <a href="https://facebook.com/votre-pseudo" class="link social-link social-facebook" target="_blank" rel="noopener">
         <span class="icon"><i class="fab fa-facebook-f"></i></span>
         <span class="social-name">Facebook</span>
       </a>
-      <!-- PENSE À MODIFIER L'URL INSTAGRAM -->
       <a href="https://instagram.com/votre-pseudo" class="link social-link social-instagram" target="_blank" rel="noopener">
         <span class="icon"><i class="fab fa-instagram"></i></span>
         <span class="social-name">Instagram</span>
@@ -725,24 +730,20 @@
       </div>
     </div>
 
-    <!-- ============================================= -->
-    <!-- NOUVELLE SECTION : CHAT PUBLIC (SHOUTBOX) -->
-    <!-- ============================================= -->
+    <!-- SECTION CHAT PUBLIC (SHOUTBOX) -->
     <div class="chat-section">
       <h2 class="section-title" data-i18n="chatTitle">💬 Chat Public</h2>
       <div class="chat-container" style="display: flex; justify-content: center; width: 100%;">
-        <!-- SCRIPT SHOUTBOX -->
         <script src="https://www.shoutbox.com/chat/17628"></script>
       </div>
     </div>
-    <!-- ============================================= -->
 
     <p class="footer" data-i18n="footer">Made with ❤️ and hosted on GitHub Pages</p>
   </div>
 
   <script>
     /* ============================================================
-       TRADUCTIONS (CORRIGÉES AVEC LE CHAT)
+       TRADUCTIONS
        ============================================================ */
     const translations = {
       en: {
@@ -814,19 +815,16 @@
       document.documentElement.lang = lang;
       document.title = t.pageTitle;
 
-      // Textes
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (t[key] !== undefined) el.textContent = t[key];
       });
 
-      // Attributs aria-label
       document.querySelectorAll('[data-i18n-label]').forEach(el => {
         const key = el.getAttribute('data-i18n-label');
         if (t[key] !== undefined) el.setAttribute('aria-label', t[key]);
       });
 
-      // État actif des boutons de langue
       document.querySelectorAll('.lang-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.lang === lang);
       });
@@ -834,7 +832,6 @@
       localStorage.setItem('lang', lang);
     }
 
-    // Gestion du clic sur les drapeaux
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         applyTranslations(btn.dataset.lang);
@@ -944,7 +941,7 @@
     });
 
     /* ============================================================
-       COPIE DE L'EMAIL (CORRIGÉ POUR FONCTIONNER PARTOUT)
+       COPIE DE L'EMAIL
        ============================================================ */
     function copyEmail(event) {
       event.preventDefault();
@@ -960,15 +957,13 @@
       }
 
       if (navigator.clipboard && window.isSecureContext) {
-        // Méthode moderne (fonctionne sur GitHub Pages / HTTPS)
         navigator.clipboard.writeText(email).then(showCopied).catch(err => {
           console.error('Erreur lors de la copie : ', err);
         });
       } else {
-        // Méthode de secours pour les tests en local (file://)
         const textArea = document.createElement("textarea");
         textArea.value = email;
-        textArea.style.position = "fixed"; // Évite de faire défiler la page
+        textArea.style.position = "fixed";
         document.body.appendChild(textArea);
         textArea.focus();
         textArea.select();
@@ -985,9 +980,8 @@
     /* ============================================================
        INITIALISATION DE LA LANGUE
        ============================================================ */
-    const savedLang = localStorage.getItem('lang') || 'en'; // Anglais par défaut
+    const savedLang = localStorage.getItem('lang') || 'en';
     applyTranslations(translations[savedLang] ? savedLang : 'en');
   </script>
 </body>
 </html>
- 
