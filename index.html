@@ -423,6 +423,34 @@
       text-shadow: 0 0 15px #FFF, 0 0 30px var(--glow-gold);
     }
 
+    /* --- BOUTON MONIA (IA) SPÉCIFIQUE --- */
+    .monia-link {
+      background: linear-gradient(135deg, #1a1a2e 0%, #4a00e0 50%, #8e2de2 100%) !important;
+      border-color: #00d2ff !important; /* Cyan pour contraster avec l'or */
+      box-shadow: 0 0 20px rgba(0, 210, 255, 0.4), inset 0 0 25px rgba(142, 45, 226, 0.6) !important;
+    }
+    .monia-link:hover {
+      box-shadow: 0 20px 50px rgba(0, 210, 255, 0.6), 0 0 40px rgba(142, 45, 226, 0.8), inset 0 0 35px rgba(0, 210, 255, 0.4) !important;
+      border-color: #ffffff !important;
+    }
+    .monia-link .fa-robot {
+      animation: floatRobot 3s ease-in-out infinite;
+    }
+    @keyframes floatRobot {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+    .monia-link .icon {
+      color: #00d2ff !important;
+      border-color: #00d2ff !important;
+      text-shadow: 0 1px 0 #FFF, 0 2px 0 #005c7a, 0 3px 6px rgba(0,0,0,0.8) !important;
+    }
+    /* Le balayage lumineux de Monia sera aussi cyan */
+    .monia-link::after {
+      background: linear-gradient(90deg, transparent 0%, rgba(0, 210, 255, 0.3) 30%, rgba(255, 255, 255, 0.95) 50%, rgba(0, 210, 255, 0.3) 70%, transparent 100%) !important;
+      filter: drop-shadow(0 0 10px rgba(0, 210, 255, 0.9)) !important;
+    }
+
     /* --- ACCORDÉON PROJETS --- */
     .arrow {
       font-size: 0.8rem;
@@ -504,24 +532,12 @@
     .social-grid .social-link:nth-child(6) { animation-delay: 1.2s, 2.5s; }
 
     /* --- PERSONNALISATION DES FONDS DE CERCLES (COULEURS DE MARQUE) --- */
-    .social-github .icon { 
-      background: linear-gradient(135deg, #24292e 0%, #000000 100%); 
-    }
-    .social-tiktok .icon { 
-      background: linear-gradient(135deg, #000000 0%, #25F4EE 100%); 
-    }
-    .social-twitter .icon { 
-      background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); 
-    }
-    .social-facebook .icon { 
-      background: linear-gradient(135deg, #1877F2 0%, #0a4da3 100%); 
-    }
-    .social-instagram .icon { 
-      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
-    }
-    .social-youtube .icon { 
-      background: linear-gradient(135deg, #FF0000 0%, #8b0000 100%); 
-    }
+    .social-github .icon { background: linear-gradient(135deg, #24292e 0%, #000000 100%); }
+    .social-tiktok .icon { background: linear-gradient(135deg, #000000 0%, #25F4EE 100%); }
+    .social-twitter .icon { background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%); }
+    .social-facebook .icon { background: linear-gradient(135deg, #1877F2 0%, #0a4da3 100%); }
+    .social-instagram .icon { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+    .social-youtube .icon { background: linear-gradient(135deg, #FF0000 0%, #8b0000 100%); }
 
     .link.social-link .icon {
       width: 45px;
@@ -650,6 +666,17 @@
     <p class="username">@Bstudio136</p>
     <p class="bio" data-i18n="bio">Welcome to my universe! Discover my projects and find me on my social networks. 🚀</p>
 
+    <!-- SECTION MONIA (IA) -->
+    <h2 class="section-title" data-i18n="moniaTitle">🤖 Mon IA</h2>
+    <div class="links" style="margin-bottom: 25px;">
+      <!-- ⚠️ REMPLACEZ URL_DE_MONIA_ICI PAR LE LIEN DE VOTRE APPLICATION MONIA -->
+      <a href="https://bstudio136.github.io/monia/" class="link monia-link" target="_blank" rel="noopener">
+        <span class="icon"><i class="fas fa-robot"></i></span> 
+        <span class="text" data-i18n="moniaText">Discuter avec MONIA (IA)</span>
+        <span class="arrow"><i class="fas fa-arrow-up-right-from-square"></i></span>
+      </a>
+    </div>
+
     <!-- SECTION MES PROJETS -->
     <h2 class="section-title" data-i18n="projectsTitle">🚀 My Projects</h2>
     <div class="links">
@@ -750,6 +777,8 @@
         pageTitle: "My Links | Bstudio136",
         themeToggleLabel: "Change theme",
         bio: "Welcome to my universe! Discover my projects and find me on my social networks. 🚀",
+        moniaTitle: "🤖 My AI",
+        moniaText: "Chat with MONIA (AI)",
         projectsTitle: "🚀 My Projects",
         viewProjects: "View my projects",
         project1: "BSuite",
@@ -768,6 +797,8 @@
         pageTitle: "Mes Liens | Bstudio136",
         themeToggleLabel: "Changer de thème",
         bio: "Bienvenue dans mon univers ! Découvrez mes projets et retrouvez-moi sur mes réseaux. 🚀",
+        moniaTitle: "🤖 Mon IA",
+        moniaText: "Discuter avec MONIA (IA)",
         projectsTitle: "🚀 Mes Projets",
         viewProjects: "Voir mes projets",
         project1: "BSuite",
@@ -786,6 +817,8 @@
         pageTitle: "I Miei Link | Bstudio136",
         themeToggleLabel: "Cambia tema",
         bio: "Benvenuto nel mio universo! Scopri i miei progetti e trovami sui miei social network. 🚀",
+        moniaTitle: "🤖 La Mia IA",
+        moniaText: "Chatta con MONIA (IA)",
         projectsTitle: "🚀 I Miei Progetti",
         viewProjects: "Vedi i miei progetti",
         project1: "BSuite",
